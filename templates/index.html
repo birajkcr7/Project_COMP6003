@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Department Dashboard</h1>
+    <p>Welcome to the Department Information Management System</p>
+</div>
+
+<div class="dashboard-grid">
+    <div class="glass stat-card">
+        <h3>Total Programs</h3>
+        <div class="value">{{ stats.programs if stats else '0' }}</div>
+    </div>
+    <div class="glass stat-card">
+        <h3>Total Courses</h3>
+        <div class="value">{{ stats.courses if stats else '0' }}</div>
+    </div>
+    <div class="glass stat-card">
+        <h3>Enrolled Students</h3>
+        <div class="value">{{ stats.students if stats else '0' }}</div>
+    </div>
+    <div class="glass stat-card">
+        <h3>Active Classrooms</h3>
+        <div class="value">{{ stats.classrooms if stats else '0' }}</div>
+    </div>
+</div>
+
+<div class="glass table-container">
+    <div class="page-header" style="margin-bottom: 1rem;">
+        <h2 style="font-size: 1.25rem;">Quick Links</h2>
+    </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="{{ url_for('programs.list_programs') }}" class="btn">View Programs</a>
+        <a href="{{ url_for('courses.search_courses') }}" class="btn">Search Courses</a>
+        <a href="{{ url_for('students.search_students') }}" class="btn">Find Student</a>
+    </div>
+</div>
+{% endblock %}
