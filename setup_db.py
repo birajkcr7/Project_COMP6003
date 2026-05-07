@@ -18,7 +18,7 @@ def setup_database():
         # Execute the schema script
         conn.executescript(sql_script)
         
-    print("Database setup complete.")
+    print("Database setup completed.")
     
 
 if __name__ == "__main__":
