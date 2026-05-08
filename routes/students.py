@@ -7,11 +7,19 @@ students_bp = Blueprint('students', __name__)
 def search_students():
     student_id = request.args.get('student_id')
     student = None
+    students = []
     enrollments = []
-    
+
     if student_id:
         student = Student.get_student(student_id)
         if student:
             enrollments = Student.get_enrollments(student_id)
-            
-    return render_template('students.html', student=student, enrollments=enrollments)
+    else:
+        students = Student.get_all_students()
+
+    return render_template(
+        'students.html',
+        student=student,
+        students=students,
+        enrollments=enrollments
+    )

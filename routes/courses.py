@@ -7,9 +7,11 @@ courses_bp = Blueprint('courses', __name__)
 def search_courses():
     prog_id = request.args.get('prog_id')
     semester = request.args.get('semester')
-    courses = None
+    courses = []
     
     if prog_id and semester:
         courses = Course.search_courses(prog_id, semester)
+    else:
+        courses = Course.get_all_courses()
         
     return render_template('courses.html', courses=courses)

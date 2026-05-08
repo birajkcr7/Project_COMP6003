@@ -11,7 +11,7 @@
 <div class="glass" style="padding: 1.5rem; margin-bottom: 2rem;">
     <form action="{{ url_for('students.search_students') }}" method="GET" class="search-bar" style="margin-bottom: 0;">
         <input type="text" name="student_id" placeholder="Student ID (e.g., S10001)"
-            value="{{ request.args.get('student_id', '') }}" required>
+            value="{{ request.args.get('student_id', '') }}">
         <button type="submit" class="btn">Search</button>
     </form>
 </div>
@@ -60,6 +60,34 @@
                     <td colspan="2" style="text-align: center; color: var(--text-muted);">No enrollments found.</td>
                 </tr>
                 {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% elif students %}
+<div class="glass" style="padding: 2rem;">
+    <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">All Students</h2>
+    <div class="table-container" style="padding: 0; margin-top: 0;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Marks</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td><span class="badge badge-blue">{{ student.studentID }}</span></td>
+                    <td>{{ student.studName }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.marksPercentage }}%</td>
+                    <td>{{ student.attendancePercentage }}%</td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

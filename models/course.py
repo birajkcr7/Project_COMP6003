@@ -23,3 +23,15 @@ class Course:
             for row in rows:
                 courses.append(Course(**dict(row)))
         return courses
+
+    @staticmethod
+    def get_all_courses():
+        courses = []
+        with sqlite3.connect('database.db') as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM Courses')
+            rows = cursor.fetchall()
+            for row in rows:
+                courses.append(Course(**dict(row)))
+        return courses
