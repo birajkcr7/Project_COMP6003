@@ -39,9 +39,8 @@ def create_app():
                 
                 cur.execute("SELECT COUNT(*) as count FROM Classrooms")
                 stats['classrooms'] = cur.fetchone()['count']
-                
         except sqlite3.Error:
-             stats = {'programs': 0, 'courses': 0, 'students': 0, 'classrooms': 0}
+            stats = {'programs': 0, 'courses': 0, 'students': 0, 'classrooms': 0}
             
         return render_template('index.html', stats=stats)
         
