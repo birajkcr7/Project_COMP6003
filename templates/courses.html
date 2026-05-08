@@ -10,8 +10,8 @@
 
 <div class="glass" style="padding: 1.5rem; margin-bottom: 2rem;">
     <form action="{{ url_for('courses.search_courses') }}" method="GET" class="search-bar" style="margin-bottom: 0;">
-        <input type="text" name="prog_id" placeholder="Program ID (e.g., UG01)" value="{{ request.args.get('prog_id', '') }}" required>
-        <input type="number" name="semester" placeholder="Semester (1-8)" min="1" max="8" value="{{ request.args.get('semester', '') }}" required>
+        <input type="text" name="prog_id" placeholder="Program ID (e.g., UG01)" value="{{ request.args.get('prog_id', '') }}">
+        <input type="number" name="semester" placeholder="Semester (1-8)" min="1" max="8" value="{{ request.args.get('semester', '') }}">
         <button type="submit" class="btn">Search</button>
     </form>
 </div>
@@ -28,29 +28,19 @@
             </tr>
         </thead>
         <tbody>
-            {% if courses is not none %}
-                {% if courses %}
-                    {% for c in courses %}
-                    <tr>
-                        <td><span class="badge badge-green">{{ c.courseCode }}</span></td>
-                        <td style="font-weight: 500;">{{ c.courseName }}</td>
-                        <td>{{ c.num_of_assessments }}</td>
-                        <td>{{ c.semester }}</td>
-                        <td>{{ c.classID }}</td>
-                    </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No courses found.</td>
-                    </tr>
-                {% endif %}
+            {% if courses %}
+                {% for c in courses %}
+                <tr>
+                    <td><span class="badge badge-green">{{ c.courseCode }}</span></td>
+                    <td style="font-weight: 500;">{{ c.courseName }}</td>
+                    <td>{{ c.num_of_assessments }}</td>
+                    <td>{{ c.semester }}</td>
+                    <td>{{ c.classID }}</td>
+                </tr>
+                {% endfor %}
             {% elif request.args %}
                 <tr>
                     <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No courses found for the given criteria.</td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">Enter search criteria to view courses.</td>
                 </tr>
             {% endif %}
         </tbody>
