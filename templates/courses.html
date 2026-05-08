@@ -28,16 +28,22 @@
             </tr>
         </thead>
         <tbody>
-            {% if courses %}
-                {% for c in courses %}
-                <tr>
-                    <td><span class="badge badge-green">{{ c.courseCode }}</span></td>
-                    <td style="font-weight: 500;">{{ c.courseName }}</td>
-                    <td>{{ c.num_of_assessments }}</td>
-                    <td>{{ c.semester }}</td>
-                    <td>{{ c.classID }}</td>
-                </tr>
-                {% endfor %}
+            {% if courses is not none %}
+                {% if courses %}
+                    {% for c in courses %}
+                    <tr>
+                        <td><span class="badge badge-green">{{ c.courseCode }}</span></td>
+                        <td style="font-weight: 500;">{{ c.courseName }}</td>
+                        <td>{{ c.num_of_assessments }}</td>
+                        <td>{{ c.semester }}</td>
+                        <td>{{ c.classID }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No courses found.</td>
+                    </tr>
+                {% endif %}
             {% elif request.args %}
                 <tr>
                     <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No courses found for the given criteria.</td>

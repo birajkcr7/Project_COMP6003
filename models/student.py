@@ -23,6 +23,14 @@ class Student:
         return None
 
     @staticmethod
+    def get_all_students():
+        with sqlite3.connect('database.db') as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM Students")
+            return [Student(**dict(row)) for row in cursor.fetchall()]
+
+    @staticmethod
     def get_enrollments(student_id):
         enrollments = []
         with sqlite3.connect('database.db') as conn:
