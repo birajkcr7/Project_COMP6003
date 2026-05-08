@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Classrooms{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Classrooms</h1>
+    <p>View all classroom listings by campus</p>
+</div>
+
+<div class="glass table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Classroom ID</th>
+                <th>Room Number</th>
+                <th>Building</th>
+                <th>Capacity</th>
+                <th>Campus</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if classrooms %}
+                {% for c in classrooms %}
+                <tr>
+                    <td><span class="badge badge-secondary">{{ c.classID }}</span></td>
+                    <td style="font-weight: 500;">{{ c.roomNum }}</td>
+                    <td>{{ c.buildingNum }}</td>
+                    <td>{{ c.seat_capacity }} seats</td>
+                    <td>
+                        {% if c.campus == 'Sydney' %}
+                            <span class="badge badge-blue">Sydney</span>
+                        {% else %}
+                            <span class="badge badge-green">Fremantle</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No classrooms found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Programs{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Academic Programs</h1>
+    <p>View all available undergraduate and postgraduate programs</p>
+</div>
+
+<div class="glass table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Program ID</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Duration (Yrs)</th>
+                <th>Total Credit</th>
+                <th>Courses</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if programs %}
+                {% for p in programs %}
+                <tr>
+                    <td><span class="badge badge-blue">{{ p.progID }}</span></td>
+                    <td style="font-weight: 500;">{{ p.progName }}</td>
+                    <td>{{ p.progLevel }}</td>
+                    <td>{{ p.duration }}</td>
+                    <td>{{ p.totalCredit }}</td>
+                    <td>{{ p.num_of_courses }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">No programs found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
