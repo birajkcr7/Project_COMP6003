@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to UNDA Department Management System</h1>
+        <p>Streamline your academic department operations with our comprehensive management platform. Manage programs, courses, students, and classrooms all in one place.</p>
+        <div class="hero-actions">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Access Dashboard</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <i class='bx bxs-graduation' style="font-size: 8rem; color: var(--primary-color);"></i>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section">
+    <div class="section-header">
+        <h2>Key Features</h2>
+        <p>Everything you need to manage your department effectively</p>
+    </div>
+    
+    <div class="features-grid">
+        <div class="glass feature-card">
+            <div class="feature-icon">
+                <i class='bx bx-book-bookmark'></i>
+            </div>
+            <h3>Program Management</h3>
+            <p>Create and manage academic programs with detailed course structures and requirements.</p>
+        </div>
+        
+        <div class="glass feature-card">
+            <div class="feature-icon">
+                <i class='bx bx-library'></i>
+            </div>
+            <h3>Course Administration</h3>
+            <p>Organize courses, track enrollments, and manage course schedules efficiently.</p>
+        </div>
+        
+        <div class="glass feature-card">
+            <div class="feature-icon">
+                <i class='bx bx-user'></i>
+            </div>
+            <h3>Student Records</h3>
+            <p>Maintain comprehensive student information and academic progress tracking.</p>
+        </div>
+        
+        <div class="glass feature-card">
+            <div class="feature-icon">
+                <i class='bx bx-buildings'></i>
+            </div>
+            <h3>Classroom Scheduling</h3>
+            <p>Optimize classroom usage with intelligent scheduling and resource management.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Preview -->
+<section class="stats-preview">
+    <div class="glass stats-container">
+        <h3>System Overview</h3>
+        <p>Get real-time insights into your department's performance and metrics.</p>
+        <a href="{{ url_for('dashboard') }}" class="btn">View Full Dashboard</a>
+    </div>
+</section>
+{% endblock %}
